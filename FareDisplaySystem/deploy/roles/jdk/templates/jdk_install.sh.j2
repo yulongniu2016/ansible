@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#get file
+wget -c -P /usr/local/src/ http://10.199.89.56/wanda/FareDisplaySystem/jdk-7u79-linux-x64.tar.gz
+#wget -c -P /etc/profile.d/ http://10.199.89.56/wanda/FareDisplaySystem/java_home.sh
+
+#install 
+mkdir /usr/local/java/
+#cd /usr/local/bin/
+#tar -xzvf jdk-7u79-linux-x64.tar.gz -C /usr/local/java/
+tar -xzvf /usr/local/src/jdk-7u79-linux-x64.tar.gz -C /usr/local/java/
+source /etc/profile

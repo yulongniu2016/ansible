@@ -1,0 +1,80 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2018-4-17 20:53:35                           */
+/*==============================================================*/
+
+
+drop table if exists terminal_equipment_info;
+
+drop table if exists terminal_msg_ask_log;
+
+drop table if exists terminal_msg_log;
+
+/*==============================================================*/
+/* Table: terminal_equipment_info                               */
+/*==============================================================*/
+create table terminal_equipment_info
+(
+   id                   bigint(12) not null auto_increment,
+   equ_name             varchar(50),
+   equ_type             int(2) not null default 0 comment '0-未定义;9-POS机;10-接口机;11-TMS',
+   equ_brand            varchar(50),
+   equ_model            varchar(50),
+   equ_ver              varchar(50),
+   equ_ip               varchar(50),
+   equ_status           int(1) not null default 0 comment '0-默认；1-已启用；2-已停用;',
+   is_deleted           varchar(1) comment '0-未删除；1-已删除',
+   equ_remark           varchar(200),
+   createtime           datetime,
+   createuser           varchar(20),
+   updatetime           datetime,
+   updateuser           varchar(20),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: terminal_msg_ask_log                                  */
+/*==============================================================*/
+create table terminal_msg_ask_log
+(
+   id                   bigint(12) not null auto_increment,
+   msg_id               bigint(12) not null,
+   ver                  varchar(20),
+   msg_type             varchar(20) comment 'QUEUE;TOPIC',
+   msg_no               varchar(20),
+   msg_serial_no        varchar(50),
+   send_time            datetime,
+   void_time            datetime,
+   source_code          varchar(50),
+   destination_code     varchar(50),
+   reserve              varchar(100),
+   msg_remark           varchar(100),
+   msg_content          text,
+   create_time          datetime,
+   update_time          datetime,
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: terminal_msg_log                                      */
+/*==============================================================*/
+create table terminal_msg_log
+(
+   id                   bigint(12) not null auto_increment,
+   ver                  varchar(20),
+   msg_type             varchar(20) comment 'QUEUE;TOPIC',
+   msg_no               varchar(20),
+   msg_serial_no        varchar(50),
+   send_time            datetime,
+   void_time            datetime,
+   source_code          varchar(50),
+   destination_code     varchar(50),
+   reserve              varchar(100),
+   msg_remark           varchar(100),
+   msg_content          text,
+   need_ask_flg         int(1) comment '0-无;1-有',
+   create_time          datetime,
+   update_time          datetime,
+   primary key (id)
+);
+

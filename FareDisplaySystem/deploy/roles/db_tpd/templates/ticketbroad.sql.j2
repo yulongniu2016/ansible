@@ -1,0 +1,147 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2017/11/23 15:30:49                          */
+/*==============================================================*/
+
+
+drop table if exists board_cinema_info;
+
+drop table if exists board_config_info;
+
+drop table if exists board_film_info;
+
+drop table if exists board_show_info;
+
+drop table if exists board_sys_setting;
+
+drop table if exists board_ticket_price_info;
+
+/*==============================================================*/
+/* Table: board_cinema_info                                     */
+/*==============================================================*/
+create table board_cinema_info
+(
+   id                   bigint(12) not null auto_increment,
+   cinema_code          varchar(12),
+   cinema_name          varchar(100),
+   ext_cinema_id        varchar(10),
+   memo                 varchar(200),
+   create_time          datetime,
+   create_user          varchar(20),
+   update_time          datetime,
+   update_user          varchar(20),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: board_config_info                                     */
+/*==============================================================*/
+create table board_config_info
+(
+   id                   bigint(12) not null auto_increment,
+   code                 varchar(50),
+   val                  varchar(200),
+   memo                 varchar(200),
+   create_time          datetime,
+   create_user          varchar(20),
+   update_time          datetime,
+   update_user          varchar(20),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: board_film_info                                       */
+/*==============================================================*/
+create table board_film_info
+(
+   id                   bigint(12) not null auto_increment,
+   board_show_id        bigint(12) comment '[board_show_info]放映场次信息的主KEY',
+   seq_no               int(3) comment '连场时可表示影片是第几场；非连场时默认为1',
+   film_code            varchar(20),
+   film_name            varchar(200),
+   film_alias           varchar(200),
+   film_title_en        varchar(200),
+   film_lang            varchar(50),
+   film_sub1            varchar(50),
+   film_sub2            varchar(50),
+   film_duration        int(3) comment '单位：分钟',
+   film_carrier         varchar(50) comment '胶片、数字',
+   film_dimensional     varchar(20) comment '2D,3D,中国巨幕,中国巨幕立体,观摩影片',
+   film_memo            varchar(200),
+   create_time          datetime,
+   create_user          varchar(20),
+   update_time          datetime,
+   update_user          varchar(20),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: board_show_info                                       */
+/*==============================================================*/
+create table board_show_info
+(
+   id                   bigint(12) not null auto_increment,
+   show_code            varchar(50) comment '唯一编号',
+   show_film_name       varchar(200),
+   show_start_time      varchar(19) comment 'YYYY-MM-DD HH:II:SS',
+   show_end_time        varchar(19) comment 'YYYY-MM-DD HH:II:SS',
+   show_duration        int(5) comment '单位：分钟',
+   show_hall_code       varchar(20),
+   show_hall_name       varchar(100),
+   show_hall_type       varchar(50) comment 'IMAX厅,会议厅,普通厅,Real3D,双机3D,XLAND,VIP厅,4DX,6FL,杜比全景声,万达9号厅,SCREENX厅,杜比影院,MX4D,中国巨幕',
+   show_total_seat      int(5),
+   show_sold_seat       int(5),
+   show_book_seat       int(5),
+   show_market_price    decimal(9,2) comment '为零时表示尚未设置市场标准价',
+   show_market_service_fee decimal(9,2) comment '市场标准票价对应的单张影票服务费',
+   show_special_flg     varchar(1) comment 'Y表示专场；N表示非专场',
+   show_lowest_price    decimal(9,2),
+   show_type            varchar(50) comment '4DX,ScreenX,Dolby,MX4D',
+   show_through_flag    varchar(1) comment 'Y表示连场；N表示普通场次',
+   show_memo            varchar(200),
+   show_vip_flg         varchar(1) comment 'Y表示贵宾厅；N表示普通厅',
+   show_view_div        varchar(20) comment 'normal;4d;dc;imax;xland;vip;real3d',
+   create_time          datetime,
+   create_user          varchar(20),
+   update_time          datetime,
+   update_user          varchar(20),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: board_sys_setting                                     */
+/*==============================================================*/
+create table board_sys_setting
+(
+   id                   bigint(12) not null auto_increment,
+   release_time         int(3) comment '单位：分钟',
+   sell_until_over      varchar(1) comment 'Y表示可以；N表示不可以',
+   delay_sell_time      int(3) comment '[是否放映结束前都可售票]值为N时生效)；单位：分钟',
+   memo                 varchar(200),
+   create_time          datetime,
+   create_user          varchar(20),
+   update_time          datetime,
+   update_user          varchar(20),
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: board_ticket_price_info                               */
+/*==============================================================*/
+create table board_ticket_price_info
+(
+   id                   bigint(12) not null auto_increment,
+   board_show_id        bigint(12) comment '[board_show_info]放映场次信息的主KEY',
+   ticket_type_code     varchar(50),
+   ticket_type_name     varchar(100),
+   ticket_type_price    decimal(9,2),
+   ticket_type_service_fee decimal(9,2),
+   ticket_price_memo    varchar(200),
+   create_time          datetime,
+   create_user          varchar(20),
+   update_time          datetime,
+   update_user          varchar(20),
+   primary key (id)
+);
+
+

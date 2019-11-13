@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SVNPATH="http://10.199.89.56/wanda/FareDisplaySystem/svndata/102_票价屏/02-后台/01-全量/"
+LOCALPATH="/usr/local/src/"
+
+
+#get 
+wget -c -P ${LOCALPATH} ${SVNPATH}01-createtable-ticketbroad.sql 
+wget -c -P ${LOCALPATH} ${SVNPATH}02-initdate-board_config_info.sql

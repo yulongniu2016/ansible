@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#get tmsterm.war
+rm -f /usr/local/tomcat-7.0.70.a/conf/server.xml 2 > /dev/null
+
+wget -c -P /usr/local/tomcat-7.0.70.a/conf http://10.199.89.56/wanda/FareDisplaySystem/svndata/104_广告自动排播/接口机/01-全量/server.xml
+
+wget -c -P /usr/local/tomcat-7.0.70.a/webapps/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/104_广告自动排播/接口机/01-全量/terminal.war
+
+#wget -c -P /opt/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/104_广告自动排播/接口机/01-全量/jmsQueue.properties
+
+wget -c -P /opt/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/104_广告自动排播/接口机/02-更新/20190510/jmsQueue.properties
+
+#rm -f /usr/local/src/* 2 > /dev/null
+

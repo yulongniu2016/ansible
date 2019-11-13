@@ -1,0 +1,4 @@
+C_HOST_IP=V_HOSTIP
+C_URL_IP=`echo ${C_HOST_IP} |awk -F. '{print $1"."$2"."$3".8"}'`
+sed -i "s/V_URLIP/${C_URL_IP}/g" /usr/local/bin/update_board_config_info.sql
+

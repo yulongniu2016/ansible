@@ -1,0 +1,15 @@
+#!/bin/bash
+
+HOSTNAME="localhost"   
+PORT="3306"
+USERNAME="root"
+PASSWORD=${1}
+
+DBNAME="cinema"      
+TABLENAME=""
+
+mysqladmin -u root password  ${PASSWORD}
+#mysql -h${HOSTNAME}  -P${PORT}  -u${USERNAME} -p${PASSWORD}  -e grant all privileges on *.* to 'root'@'%' identified by ${PASSWORD}
+mysql -uroot -p${PASSWORD}  --execute="grant all privileges on *.* to 'root'@'%' identified by ${PASSWORD}"
+
+mysql -uroot -p${PASSWORD}  --execute="CREATE DATABASE cinema DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"

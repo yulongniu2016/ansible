@@ -1,0 +1,15 @@
+#!/bin/bash
+
+rpm -e MySQL-client-5.5.58-1.el6.x86_64
+rpm -e MySQL-server-5.5.58-1.el6.x86_64
+rpm -e MySQL-devel-5.5.58-1.el6.x86_64
+
+rm -rf /var/lib/mysql/
+
+rm -f /etc/my.cnf 
+
+#get file
+wget -c -P /usr/local/src http://10.199.89.56/wanda/FareDisplaySystem/MySQL-client-5.5.58-1.el6.x86_64.rpm
+wget -c -P /usr/local/src/ http://10.199.89.56/wanda/FareDisplaySystem/MySQL-devel-5.5.58-1.el6.x86_64.rpm
+wget -c -P /usr/local/src/ http://10.199.89.56/wanda/FareDisplaySystem/MySQL-server-5.5.58-1.el6.x86_64.rpm
+

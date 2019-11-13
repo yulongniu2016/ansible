@@ -1,0 +1,20 @@
+#!/bin/bash
+
+dbpasswd=${1}
+LDIR="/usr/local/src/"
+SVNURL="http://10.199.89.56/wanda/FareDisplaySystem/svndata/104_广告自动排播/接口机/01-全量/"
+
+wget -c -P ${LDIR} ${SVNURL}/01-create_table_terminal_v1.0.0.sql
+wget -c -P ${LDIR} ${SVNURL}/02-initdata-terminal_equipment_info.sql
+
+/usr/bin/mysql -uroot -p${dbpasswd} cinema < ${LDIR}01-create_table_terminal_v1.0.0.sql
+/usr/bin/mysql -uroot -p${dbpasswd} cinema < ${LDIR}02-initdata-terminal_equipment_info.sql
+
+
+
+
+
+
+
+
+

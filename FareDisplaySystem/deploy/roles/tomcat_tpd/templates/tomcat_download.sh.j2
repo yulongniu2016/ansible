@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#get ticketboard.war
+wget -c -P /usr/local/src/ http://10.199.89.56/wanda/FareDisplaySystem/apache-tomcat-7.0.70.tar.gz
+
+tar -xzvf /usr/local/src/apache-tomcat-7.0.70.tar.gz -C /usr/local/
+
+mv /usr/local/apache-tomcat-7.0.70 /usr/local/tomcat-7.0.70
+
+rm -f /usr/local/tomcat-7.0.70/conf/server.xml
+
+wget -c -P /usr/local/tomcat-7.0.70/conf/  http://10.199.89.56/wanda/FareDisplaySystem/svndata/102_票价屏/02-后台/01-全量/server.xml 
+rm -f /usr/local/tomcat-7.0.70/conf/context.xml
+
+wget -c -P /usr/local/tomcat-7.0.70/conf/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/102_票价屏/02-后台/01-全量/context.xml
+
+wget -c -P /usr/local/tomcat-7.0.70/webapps/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/102_票价屏/02-后台/01-全量/ticketboard.war
+
+echo "nohup /usr/local/tomcat-7.0.70/bin/startup.sh &" >> /etc/rc.local
+
+nohup /usr/local/tomcat-7.0.70/bin/startup.sh &
+

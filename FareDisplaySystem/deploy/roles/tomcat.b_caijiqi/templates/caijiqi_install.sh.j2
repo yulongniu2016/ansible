@@ -1,0 +1,48 @@
+#!/bin/bash
+
+dbpw=${1}
+
+LOG="/var/log/da.log"
+
+echo "Start time "`date '+%Y-%m-%d %H:%M:%S'` > ${LOG}
+
+wget -c -P /usr/local/src/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/105_采集器/01-全量/install/nmap-7.80-1.x86_64.rpm
+
+rm -f /usr/local/src/*.sql 2 > /dev/null
+
+wget -c -P /usr/local/src/ http://10.199.89.56/wanda/FareDisplaySystem/svndata/105_采集器/01-全量/01-create_table_terminal_v1.0.0.sql
+
+/usr/bin/mysql -uroot -p${dbpw} cinema < /usr/local/src/01-create_table_terminal_v1.0.0.sql
+
+rpm -ivh /usr/local/src/nmap-7.80-1.x86_64.rpm
+
+rpm -qa|grep nmap >> ${LOG}
+
+#cp -a /usr/local/tomcat-7.0.70 /usr/local/tomcat-7.0.70.b
+
+#rm -rf /usr/local/tomcat-7.0.70.b/webapps/ticketboard* 2 > /dev/null
+
+#rm -f /usr/local/tomcat-7.0.70.b/conf/server.xml 2 > /dev/null
+
+tar -xzvf /usr/local/src/apache-tomcat-7.0.70.tar.gz -C /usr/local/
+
+mv /usr/local/apache-tomcat-7.0.70/ /usr/local/tomcat-7.0.70.b
+
+rm -f /usr/local/tomcat-7.0.70.b/conf/server.xml
+
+wget -c -P /usr/local/tomcat-7.0.70.b/conf/  http://10.199.89.56/wanda//FareDisplaySystem/svndata/105_采集器/01-全量/server.xml
+
+#get tmsterm.war
+wget -c -P /usr/local/tomcat-7.0.70.b/webapps/ http://10.199.89.56/wanda//FareDisplaySystem/svndata/105_采集器/01-全量/daqterm.war
+
+echo "nohup /usr/local/tomcat-7.0.70.b/bin/startup.sh &" >> /etc/rc.local
+
+nohup /usr/local/tomcat-7.0.70.b/bin/startup.sh &
+
+ps -ef|grep '/usr/local/tomcat-7.0.70.b' >> ${LOG}
+
+cat /usr/local/tomcat-7.0.70.b/webapps/daqterm/version.properties >> ${LOG}
+
+rm -f /usr/local/src/* 2 > /dev/null
+
+echo "End time "`date '+%Y-%m-%d %H:%M:%S'` >> ${LOG}

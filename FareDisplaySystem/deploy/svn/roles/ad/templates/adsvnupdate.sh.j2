@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SPATH='/opt/lampp/htdocs/wanda/FareDisplaySystem'
+Svn_chk()
+{
+  svn checkout svn://10.199.88.69/nocsvn/RDCode/doc/900_部署发布/  ${SPATH}/svndata/
+}
+
+Svn_Update()
+{
+  #svn update /srv/www/repos/noc/FareDisplaySystem/svndata/
+  svn info ${SPATH}/svndata/104_广告自动排播/接口机
+  svn update ${SPATH}/svndata/104_广告自动排播/接口机
+
+}
+
+case $1 in
+'chk')
+  Svn_chk
+  ;;
+'up')
+  Svn_Update
+  ;;
+*)
+ echo "Usage: $0 <chk / up>"
+ ;;
+esac

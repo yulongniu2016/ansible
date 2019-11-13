@@ -1,0 +1,5 @@
+
+1.更新svn
+1.编辑hosts
+2.批量部署
+  ansible-playbook -i hosts site.yml -k
