@@ -1,0 +1,3 @@
+执行部署
+  ansible-playbook -i hosts site.yml -k
+
