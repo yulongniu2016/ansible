@@ -1,9 +1,0 @@
----
-- name: download yum set script
-  get_url:
-      url: http://10.199.88.248/noc/yumset/yum_setup_2.1.sh 
-      dest: /usr/local/bin/yum_setup_2.1.sh 
-      force: yes
-
-- name: run install yum set  script
-  command: /bin/sh /usr/local/bin/yum_setup_2.1.sh

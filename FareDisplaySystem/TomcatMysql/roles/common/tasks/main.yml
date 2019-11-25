@@ -1,4 +1,0 @@
----
-- include: set_selinux.yml
-- include: set_iptables.yml
-- include: set_ntp.yml

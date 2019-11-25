@@ -1,7 +1,0 @@
----
-
-vars:
-#IP: " {{ inventory_hostname }} "
-#INTERFACE_URL: http://"{{ ansible_default_ipv4.address }}"/?m=api&a=getWdLcdData
-#SQL_STATEMENT: update board_config_info set val='{{ INTERFACE_URL  }}' where code = 'TICKET_SYS_URL'
-A_HOSTIP: "{{ ansible_default_ipv4.address }}"

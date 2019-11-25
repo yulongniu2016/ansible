@@ -1,6 +1,0 @@
----
-- name: stop iptables
-  service: name=iptables state=stopped
-
-- name: disable iptables
-  command: /sbin/chkconfig iptables off
