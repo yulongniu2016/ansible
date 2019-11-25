@@ -1,0 +1,15 @@
+
+1.更新svn
+   ansible svn -i svnhost -k -m command -a "/srv/www/repos/noc/FareDisplaySystem/tpdsvnupdate.sh"
+
+2.编辑hosts
+3.批量部署
+  ansible-playbook -i hosts site.yml -k
+wandatpd
+
+
+insert into tms_hosts (cinemaName,cinemaCoding,tmsIP,ticketingSystemIP,tpdIP,status) values ("东莞虎门大宁店",'20171212','10.26.202.6','10.26.200.8','10.26.200.17','1');
+
+insert into tms_hosts (cinemaName,cinemaCoding,virtualization,tmsIP,ticketingSystemIP,tpdIP,status) values ("上海大融城店",'20180219','虚拟化','10.156.234.6','10.156.232.8','10.156.232.17','1');
+
+update tms_hosts set cinemaName='泉州万科广场店',cinemaCoding='20171115',tmsIP='10.60.244.6',ticketingSystemIP='10.60.242.8',tpdIP='10.60.242.17',status='1' where id='479'

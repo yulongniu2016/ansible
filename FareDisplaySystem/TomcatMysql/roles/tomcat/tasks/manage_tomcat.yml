@@ -1,0 +1,7 @@
+---
+
+- name: start tomcat service
+  #shell: nohup /usr/local/tomcat-7.0.70/bin/startup.sh &
+  shell: nohup /data/tomcat-7.0.70/bin/startup.sh 
+  
+

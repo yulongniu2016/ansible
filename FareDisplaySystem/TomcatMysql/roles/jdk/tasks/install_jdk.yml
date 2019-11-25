@@ -1,0 +1,11 @@
+---
+- name: download jdk install script
+#  command: /usr/bin/wget wget -c -P /usr/local/bin/ http://10.199.88.248/noc/FareDisplaySystem/jdk_install.sh
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/jdk_install.sh
+      dest: /usr/local/bin/jdk_install.sh
+      force: yes
+
+- name: run install script
+  command: /bin/sh /usr/local/bin/jdk_install.sh
+

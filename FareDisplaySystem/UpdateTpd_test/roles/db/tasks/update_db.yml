@@ -1,0 +1,17 @@
+---
+
+- name: create set_update_board_config_info script
+  template: src=set_update_board_config_info.sh.j2  dest=/usr/local/bin/set_update_board_config_info.sh
+
+- name: create update sql for board_config_info table
+  template: src=update_board_config_info.sql.j2 dest=/usr/local/bin/update_board_config_info.sql
+
+- name: set set_update_board_config_info script
+  shell: /bin/sed -i "s/V_HOSTIP/{{ A_HOSTIP }}/g" /usr/local/bin/set_update_board_config_info.sh
+
+- name: run set_update_board_config_info script
+  shell: /bin/sh /usr/local/bin/set_update_board_config_info.sh
+
+- name: upate  board_config_info table
+  shell: "/usr/bin/mysql -uroot -p{{ dbpasswd }} cinema < /usr/local/bin/update_board_config_info.sql"
+  #shell: echo "{{ SQL_STATEMENT }}" > aa.txt

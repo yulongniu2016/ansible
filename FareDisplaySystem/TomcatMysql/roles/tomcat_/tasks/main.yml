@@ -1,0 +1,3 @@
+---
+- include: install_tomcat.yml
+- include: manage_tomcat.yml

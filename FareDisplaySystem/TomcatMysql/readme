@@ -1,0 +1,10 @@
+
+1.更新svn
+ #单屏:
+   ansible svn -i svnhost -k -m command -a "/srv/www/repos/noc/FareDisplaySystem/svnupdate.sh single"
+ #双屏：
+   ansible svn -i svnhost -k -m command -a "/srv/www/repos/noc/FareDisplaySystem/svnupdate.sh double"
+2.编辑hosts
+3.批量部署
+  ansible-playbook -i hosts site.yml -k
+wandatpd

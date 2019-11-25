@@ -1,0 +1,4 @@
+[tms]
+#10.12.7.17 cinemaName=南京建邺万达广场店 cinemaCoding=32012001 ticketingSystemIP=10.12.7.8 tmsIP=10.12.52.6 virtualization=虚拟化 status=1 d=20180427
+#10.27.6.17 cinemaName=呼和浩特万达广场店 cinemaCoding=15010809 ticketingSystemIP=10.27.6.8 tmsIP=10.27.10.6 virtualization=虚拟化 status=1 d=20180427
+10.118.216.17 cinemaName=北京通州银兴光魔店 cinemaCoding=11080551 ticketingSystemIP=10.118.216.8 tmsIP=10.118.218.6 virtualization=虚拟化 status=1

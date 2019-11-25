@@ -1,0 +1,19 @@
+---
+
+#- name: check Mysql-client
+#  shell: "/bin/ls /usr/bin/mysql"
+#  register: mysqlclient
+#  ignore_errors: True
+
+#- name: Install Mysql-client
+#  yum: name=mysql-server state=latest
+#  when: mysqlclient | failed
+ 
+- name: get App Version
+  shell: "/bin/grep 'serial' /usr/local/tomcat-7.0.70/webapps/ticketboard/version.properties | awk -F= '{print $2}'"
+  register: AppVersion
+
+#- name: get App Version
+#  shell: "echo {{ AppVersion.stdout }} >/opt/ver.log"
+- name: Update App Version into DB
+  shell: /usr/bin/mysql -h{{ dbhost }} -uroot -p{{ dbpassword }} --default-character-set=utf8 -e "update wandanoc.tms_hosts set VersionTpd='{{ AppVersion.stdout }}',UpdateTimeTpd=now()  where tpdIP='{{ inventory_hostname }}'"

@@ -1,0 +1,22 @@
+---
+- name: download tomcat install package 
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/apache-tomcat-7.0.70.tar.gz
+      dest: /usr/local/bin/apache-tomcat-7.0.70.tar.gz
+      force: yes
+
+- name: tar tomcat install package
+#  command: /bin/tar -xzvf /usr/local/bin/apache-tomcat-7.0.70.tar.gz -C /usr/local/
+  unarchive: src=/usr/local/bin/apache-tomcat-7.0.70.tar.gz  dest=/usr/local/ copy=no
+
+- name: rename apache-tomcat-7.0.70 to tomcat-7.0.70
+  shell: mv /usr/local/apache-tomcat-7.0.70 /usr/local/tomcat-7.0.70.a
+
+- name: create tomcat config file
+  template: src=server.xml.j2 dest=/usr/local/tomcat-7.0.70.a/conf/server.xml
+
+- name: set tomcat auto start
+  shell: echo "nohup /usr/local/tomcat-7.0.70.a/bin/startup.sh &" >> /etc/rc.local
+
+- name: start tomcat service
+  shell: nohup /usr/local/tomcat-7.0.70.a/bin/startup.sh &

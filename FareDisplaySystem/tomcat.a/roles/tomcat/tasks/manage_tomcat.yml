@@ -1,0 +1,19 @@
+---
+
+#- name: stop tomcat service
+#  shell: /usr/local/tomcat-7.0.70.a/bin/shutdown.sh
+
+#- name: remove old application 
+#  shell: rm -rf /usr/local/tomcat-7.0.70/webapps/ticketboard > /dev/null
+#  file: path=/usr/local/tomcat-7.0.70.a/webapps/ticketboard state=absent  
+
+#- name: deploy application
+#  get_url:
+#      url: http://10.199.88.248/noc/FareDisplaySystem/02app/ticketboard.war
+#      dest: /usr/local/tomcat-7.0.70.a/webapps/ticketboard.war
+#      force: yes
+
+#- name: start tomcat service
+#  shell: nohup /usr/local/tomcat-7.0.70.a/bin/startup.sh &
+
+

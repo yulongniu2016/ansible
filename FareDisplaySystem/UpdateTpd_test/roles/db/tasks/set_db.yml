@@ -1,0 +1,29 @@
+---
+
+#- name:
+#  shell: /usr/bin/mysql -e "CREATE DATABASE cinema DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
+
+- name: get ticketbroad.sql
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/01db/01-createtable-ticketbroad.sql
+      dest: /usr/local/bin/ticketbroad.sql
+      force: yes
+
+- name: get board_config_info.sql
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/01db/02-initdate-board_config_info.sql
+      dest: /usr/local/bin/board_config_info.sql
+      force: yes
+
+- name: import ticketbroad.sql
+  shell: '/usr/bin/mysql -uroot -p{{ dbpasswd }} cinema < /usr/local/bin/ticketbroad.sql'
+
+- name: import  board_config_info.sql
+  shell: '/usr/bin/mysql -uroot -p{{ dbpasswd }} cinema < /usr/local/bin/board_config_info.sql'
+
+#- name: set remote access mysql privileges
+#  shell: /usr/bin/mysql --execute="grant all privileges on *.* to 'root'@'%' identified by '{{ dbpasswd }}'"
+
+#- name: set root password
+#  shell: /usr/bin/mysqladmin -u root password {{ dbpasswd }} 
+

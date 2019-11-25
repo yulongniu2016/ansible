@@ -1,0 +1,5 @@
+
+2.编辑hosts
+3.批量部署
+  ansible-playbook -i hosts site.yml -k
+wandatpd

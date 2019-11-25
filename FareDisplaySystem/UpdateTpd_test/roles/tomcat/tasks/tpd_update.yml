@@ -1,0 +1,34 @@
+---
+
+#- name: remove old application pkg
+#  file: path=/usr/local/tomcat-7.0.70/webapps/ticketboard.war state=absent
+
+#- name: update application
+#  get_url:
+#      url: http://10.199.88.248/noc/FareDisplaySystem/svndata/102_票价屏/02-后台/01-全量/ticketboard.war
+#      dest: /usr/local/tomcat-7.0.70/webapps/ticketboard.war
+#      force: yes
+- name: create update script
+  template: src=tpdupdate_download.sh.j2 dest=/usr/local/bin/tpdupdate_download.sh
+
+- name: run update script 
+  shell: /bin/sh /usr/local/bin/tpdupdate_download.sh
+
+#- name: stop tomcat service
+#  shell: /usr/local/tomcat-7.0.70/bin/shutdown.sh
+
+#- name: remove old application
+#  shell: rm -rf /usr/local/tomcat-7.0.70/webapps/ticketboard > /dev/null
+#  file: path=/usr/local/tomcat-7.0.70/webapps/ticketboard state=absent
+
+
+#- name: update configure file context.xml
+#  get_url:
+#      url: http://10.199.88.248/noc/FareDisplaySystem/svndata/102_票价屏/02-后台/01-全量/context.xml
+#      dest: /usr/local/tomcat-7.0.70/conf/context.xml
+#      force: yes
+
+- name: start tomcat service
+  shell: nohup /usr/local/tomcat-7.0.70/bin/startup.sh &
+
+

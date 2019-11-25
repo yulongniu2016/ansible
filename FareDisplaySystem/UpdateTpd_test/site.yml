@@ -1,0 +1,25 @@
+---
+    
+- name: MySQL
+  hosts: all
+  remote_user: root
+  roles:
+  #  - db
+
+- name: Tomcat
+  hosts: all
+  remote_user: root
+  roles:
+    - tomcat
+
+- name: Checking App Version
+  hosts: all
+  remote_user: root
+  roles:
+    - appVersion
+
+- name: End
+  hosts: all
+  remote_user: root
+  roles:
+    - end

@@ -1,0 +1,16 @@
+---
+
+- name: set ntpd first
+  shell: "echo 'server 10.0.5.55 iburst' >> /etc/ntp.conf"
+
+- name: set ntpd second
+  shell: "echo 'server 10.0.5.56 iburst' >> /etc/ntp.conf"
+
+- name: set ntpd autostart 
+  shell: /sbin/chkconfig ntpd on
+
+- name: set ntpd 
+  service: name=ntpd state=started
+
+- name: sync current time
+  shell: "ntpdate -u 10.0.5.55"

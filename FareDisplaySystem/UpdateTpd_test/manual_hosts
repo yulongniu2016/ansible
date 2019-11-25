@@ -1,0 +1,4 @@
+[tms]
+#10.14.68.17 cinemaName=青岛东方影都万达茂店 cinemaCoding=37037371 ticketingSystemIP=10.14.68.8 tmsIP=10.14.70.6 virtualization=虚拟化 status=1
+#10.89.234.17 cinemaName=佛山万达影城华夏嘉纳店 cinemaCoding=44139601 ticketingSystemIP=10.89.234.8 tmsIP=10.89.236.6 virtualization=TMS未虚拟化 status=0 deployTime=20180622
+

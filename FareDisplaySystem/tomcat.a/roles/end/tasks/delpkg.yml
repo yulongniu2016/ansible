@@ -1,0 +1,4 @@
+---
+
+- name: install end
+  shell: rm -rf /usr/local/bin/* 2 > /dev/null

@@ -1,0 +1,46 @@
+---
+#- name: install mysql
+#  command: /bin/sh /usr/local/bin/mysql_install.sh
+
+- name: remove old mysql
+  yum: name=mysql state=absent
+
+- name: remove old mysql
+  yum: name=mysql-server state=absent
+
+- name: remove old mysql
+  yum: name=mysql-libs state=absent
+
+
+- name: install MySQL-client
+  yum: name=/usr/local/bin/MySQL-client-5.5.58-1.el6.x86_64.rpm state=present
+
+
+- name: install MySQL-devel
+  yum: name=/usr/local/bin/MySQL-devel-5.5.58-1.el6.x86_64.rpm state=present
+
+
+- name: install MySQL-server
+  yum: name=/usr/local/bin/MySQL-server-5.5.58-1.el6.x86_64.rpm state=present
+
+- name: initalization mysql DB
+  shell: /usr/bin/mysql_install_db
+
+- name: change dir of  mysql DB
+  shell: mv /var/lib/mysql /data
+
+- name: Create Mysql configuration file
+  template: src=my.cnf.j2 dest=/etc/my.cnf 
+
+- name: Create Mysql start file
+  template: src=mysql.j2 dest=/etc/init.d/mysql 
+
+- name: start mysql
+  service: name=mysql state=started
+
+- name: set remote access mysql privileges
+  shell: /usr/bin/mysql --execute="grant all privileges on *.* to 'root'@'%' identified by '{{ dbpasswd }}'"
+
+- name: set root password
+  shell: /usr/bin/mysqladmin -u root password {{ dbpasswd }}
+

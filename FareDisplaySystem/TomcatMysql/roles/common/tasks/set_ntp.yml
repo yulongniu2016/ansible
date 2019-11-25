@@ -1,0 +1,13 @@
+---
+
+- name: set ntpd autostart 
+  shell: /sbin/chkconfig ntpd on
+
+- name: Create NTP configuration file
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+
+- name: set ntpd 
+  service: name=ntpd state=started
+
+- name: sync current time
+  shell: "ntpdate -u 10.0.5.55"

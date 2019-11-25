@@ -1,0 +1,14 @@
+---
+
+- name: Install Tomcat
+  hosts: all
+  remote_user: root
+  roles:
+    - tomcat_
+
+
+#- name: Install end 
+#  hosts: all
+#  remote_user: root
+#  roles:
+#    - end

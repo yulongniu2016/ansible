@@ -1,0 +1,18 @@
+[first]
+#10.63.4.17
+#10.9.9.17 	cinema_name=武汉菱角湖万达广场店
+#10.22.7.17	cinema_name=苏州SM广场店
+#10.19.204.17	cinema_name=重庆奥园
+#10.14.14.17	cinema_name=青岛李沧万达广场店
+#10.10.8.17    	cinema_name=长沙步步高广场店
+#10.9.16.17    	cinema_name=武汉经开万达广场店
+#10.72.1.17    	cinema_name=东营西二路店
+#10.81.1.17    	cinema_name=岳阳步步高广场店
+#10.118.212.17  cinema_name=望京保利光魔
+#10.118.216.17  cinema_name=通州银兴光魔
+#10.55.4.17    	cinema_name=镇江万达广场店
+#10.71.6.17    	cinema_name=漳州万达广场店 start_time=2018-3-19
+#10.60.6.17    	cinema_name=换装-泉州浦西万达影城 start_time=2018-3-21
+## start set ntpd service
+#10.33.8.17    	cinema_name=换装_晋江万达广场店 start_time=2018-3-23
+10.49.7.17    	cinema_name=换装_福州仓山万达影城 start_time=2018-3-26

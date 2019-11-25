@@ -1,0 +1,23 @@
+---
+#- name: install mysql
+#  command: /bin/sh /usr/local/bin/mysql_install.sh
+
+- name: download MySQL-client
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/MySQL-client-5.5.58-1.el6.x86_64.rpm
+      dest: /usr/local/bin/MySQL-client-5.5.58-1.el6.x86_64.rpm
+      force: yes
+
+- name: download MySQL-devel
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/MySQL-devel-5.5.58-1.el6.x86_64.rpm
+      dest: /usr/local/bin/MySQL-devel-5.5.58-1.el6.x86_64.rpm
+      force: yes
+
+- name: download MySQL-server
+  get_url:
+      url: http://10.199.88.248/noc/FareDisplaySystem/MySQL-server-5.5.58-1.el6.x86_64.rpm
+      dest: /usr/local/bin/MySQL-server-5.5.58-1.el6.x86_64.rpm
+      force: yes
+
+
