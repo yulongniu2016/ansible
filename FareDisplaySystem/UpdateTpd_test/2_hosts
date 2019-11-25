@@ -1,6 +1,0 @@
-[tms]
-10.108.224.17 cinemaName=淄博彩世界广场店 cinemaCoding=37041901 ticketingSystemIP=10.108.224.8 tmsIP=10.108.226.6 virtualization=虚拟化 status=1
-10.3.52.17 cinemaName=佳木斯万达广场店 cinemaCoding=23040311 ticketingSystemIP=10.3.52.8 tmsIP=10.3.56.6 virtualization=虚拟化 status=1
-10.48.68.17 cinemaName=合肥瑶海万达广场店 cinemaCoding=34016601 ticketingSystemIP=10.48.68.8 tmsIP=10.48.70.6 virtualization=TMS未虚拟化 status=1
-10.3.20.17 cinemaName=哈尔滨哈西万达广场店 cinemaCoding=23014901 ticketingSystemIP=10.3.20.8 tmsIP=10.3.68.6 virtualization=TMS未虚拟化 status=1
-
